@@ -122,13 +122,13 @@ a:active{
 	}
 }
 #day{
-	font-size:1.5em;
-	font-weight:bold;
+	font-size:0.8em;
+/*	font-weight:bold;*/
 	margin-top:-5%;
 }
 #date{
 	text-align:right;
-	font-size:1.2em;
+	font-size:0.8em;
 	margin-top:-4px;
 }
 /* WEATHER WIDGET STYLES*/
@@ -287,9 +287,7 @@ a:link,
 a:active,
 a:visited,
 .weatherForecastDay,
-#time,
-#day,
-#date{
+#fulltime{
 	color:#fff;
 }
 #bm li a{
