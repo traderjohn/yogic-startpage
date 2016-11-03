@@ -19,6 +19,17 @@ $(document).ready(function(){
 		}
 	});
 	
+	//Background image
+	// sourced from unsplash.com; reference source.unsplahs.com
+	// background got to be dark for the styling/ fonts are light in color
+	//var bgURL= 'https://source.unsplash.com/category/nature';
+	var bgURL= 'https://source.unsplash.com/collection/292287/daily';
+	$('body').css({
+		'background-image':'url('+ bgURL +')',
+		'background-repeat':'no-repeat',
+		'background-size': 'cover'
+	});
+	
 	//WEATHER
 	$('#weather').weatherfeed(['USTX0542'], {
 		forecast: true,
@@ -33,18 +44,21 @@ $(document).ready(function(){
 		var today=new Date();
 		var h=today.getHours();
 		var m=today.getMinutes();
+		var s=today.getSeconds();
 		var days = ['Sun','Mon','Tues','Wednes','Thurs','Fri','Satur'];
 		var months = ['Jan','Feb','Mar','Apr','May','Jun','July','Aug','Sep','Nov','Dec'];
 		
 		m = checkTime(m);
 		h = checkTime(h);
+		s = checkTime(s);
 		
-		m = today.getHours()>12? m+'PM' : m+'AM';
-		h = h>12? parseInt(h)-12: h ;
+		//m = today.getHours()>12? m+'PM' : m+'AM';
+		//h = h>12? parseInt(h)-12: h ;
 		
-		$('#time').html(h+'<span>:</span>'+m);
+		$('#time').html(h +'<span>:</span>'+ m +'<span>:</span>'+ s);
+		//$('#time').html(h+'<span>:</span>'+m);
 		$('#day').html(days[today.getDay()]+'day');
-		$('#date').html(months[today.getMonth()]+' '+today.getDate()+', '+today.getFullYear());
+		$('#date').html(months[today.getMonth()-1]+' '+today.getDate()+', '+today.getFullYear());
 		
 		setTimeout(function(){startTime()},500);
 	}
