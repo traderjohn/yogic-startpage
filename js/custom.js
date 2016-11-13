@@ -50,7 +50,7 @@ $(document).ready(function(){
 		'background-size': 'cover'
 	});
 	
-	//WEATHER
+   	//WEATHER
 	$('#weather').weatherfeed(['USTX0542'], {
 		forecast: true,
 		wind: false,

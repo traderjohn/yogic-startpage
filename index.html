@@ -7,6 +7,8 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="js/zweatherfeed.min.js"></script>
 <script type="text/javascript" src="js/custom.js"></script>
+<script type="text/javascript" src="js/menu.js"></script>
+
 
 <!-- Add mousewheel plugin (this is optional) -->
 <script type="text/javascript" src="lib/jquery.mousewheel-3.0.6.pack.js"></script>
@@ -41,11 +43,11 @@
 		</header>
 		<section id="bm">
 			<ul>
-				<li class="title">tech</li>
-				<li><a href="#">r/web_design</a></li>
-				<li><a href="#">r/unixporn</a></li>
-				<li><a href="#">r/battlestations</a></li>
-				<li><a href="#">stackoverflow</a></li>
+				<li class="title" onclick="dropdownToggle(this)">tech</li>
+				<li class="link"><a href="#">r/web_design</a></li>
+				<li class="link"><a href="#">r/unixporn</a></li>
+				<li class="link"><a href="#">r/battlestations</a></li>
+				<li class="link"><a href="#">stackoverflow</a></li>
 			</ul>
 			<ul>
 				<li class="title">anime</li>

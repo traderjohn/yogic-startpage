@@ -183,12 +183,16 @@ a:active{
 	margin-bottom:5%;
 	
 }
+#bm .link{
+    display: none;
+}
 #bm a{
 	display:block;
 }
 #bm a:hover{
 	margin-left:1%;
 }
+
 /* SEARCH STYLES */
 #search{
 	margin-top:5%;
