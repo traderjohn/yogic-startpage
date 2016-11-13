@@ -75,11 +75,15 @@ a:active{
 }
 /* TIME STYLES */
 #fulltime{
-	float:left;
+/*	float:center;*/
+	margin:auto;
+	width:230px;
+	text-align:center;
 	text-transform:uppercase;
 }
 #time{
 	font-size:4em;
+	margin-top:5px;
 }
 #time span{
 	animation: blink 4s linear infinite;
@@ -122,15 +126,16 @@ a:active{
 	}
 }
 #day{
+	float:left;
 	font-size:0.8em;
 /*	font-weight:bold;*/
-	margin-top:-5%;
+	text-align:left;
 }
 #date{
 	text-align:right;
 	font-size:0.8em;
-	margin-top:-4px;
 }
+
 /* WEATHER WIDGET STYLES*/
 #weather .weatherForecastRange,
 #weather .weatherForecastText,

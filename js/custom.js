@@ -23,7 +23,27 @@ $(document).ready(function(){
 	// sourced from unsplash.com; reference source.unsplahs.com
 	// background got to be dark for the styling/ fonts are light in color
 	//var bgURL= 'https://source.unsplash.com/category/nature';
-	var bgURL= 'https://source.unsplash.com/collection/292287/daily';
+	var bgBaseUrl= 'https://source.unsplash.com/collection/';
+	var dayColId= '407887';
+	var nightColId= '407877';
+	var dawnColId= '407882';
+	var duskColId= '407878';
+	var bgURL= bgBaseUrl;
+
+	var curD= new Date();
+	var curH= curD.getHours();
+	if (curH >= 5 && curH< 7){
+	    bgURL += dawnColId;
+	}else if (curH >= 7 && curH< 18){
+	    bgURL += dayColId;
+	}else if (curH >= 18 && curH< 20){
+	    bgURL += duskColId;
+	}else {
+	    bgURL += nightColId;
+	};
+
+	bgURL= bgURL + '/daily';
+
 	$('body').css({
 		'background-image':'url('+ bgURL +')',
 		'background-repeat':'no-repeat',
