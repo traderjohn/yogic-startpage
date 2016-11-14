@@ -51,14 +51,34 @@ $(document).ready(function(){
 	});
 	
    	//WEATHER
-	$('#weather').weatherfeed(['USTX0542'], {
-		forecast: true,
-		wind: false,
-		link: false,
-		humidity: false,
-		visibility: false,
-	});
-
+	var bolShowWeather= true;
+	var bolGeoLocate= false;
+	var strLoco = 'Hong Kong, Hong Kong';
+	if (navigator.geolocation && bolShowWeather && bolGeoLocate ){
+	    navigator.geolocation.getCurrentPosition(function(position){
+		    loadWeather( position.coords.latitude + ',' + position.coords.longitude);
+		});
+	}else if( bolShowWeather){
+	    loadWeather(strLoco);
+	}
+	function loadWeather(strLoco, woeid){
+	    $.simpleWeather({
+		    location: strLoco,
+			woeid: '',
+			unit: 'c',
+			success: function(weather) {
+			html = '<h2 class="weatherHead"><i class="wi wi-yahoo-'+weather.code+'"></i> '+weather.temp+'&deg;'+weather.units.temp+'</h2>';
+			html += '<ul class="weatherDetail"><li>'+weather.city+', '+weather.region+'</li>';
+			html += '<li class="currently">'+weather.currently+'</li></ul>';
+			
+			$("#weather").html(html);
+		    },
+			error: function(error) {
+			$("#weather").html('<p>'+error+'</p>');
+		    }
+		});
+	}
+	
 	//TIME
 	function startTime() {
 		var today=new Date();

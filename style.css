@@ -73,9 +73,21 @@ a:active{
     font-style: normal;
 
 }
+/*
+@font-face {
+    font-family: 'weathericons';
+    src: url('https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/font/weathericons-regular-webfont.eot');
+    src: url('https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/font/weathericons-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/font/weathericons-regular-webfont.woff2') format('woff2'),
+         url('https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/font/weathericons-regular-webfont.woff') format('woff'),
+         url('https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/font/weathericons-regular-webfont.ttf') format('truetype'),
+         url('https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/font/weathericons-regular-webfont.svg#weather_iconsregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+*/
 /* TIME STYLES */
 #fulltime{
-/*	float:center;*/
 	margin:auto;
 	width:230px;
 	text-align:center;
@@ -137,31 +149,23 @@ a:active{
 }
 
 /* WEATHER WIDGET STYLES*/
-#weather .weatherForecastRange,
-#weather .weatherForecastText,
-#weather .weatherForecastDate,
-#weather .weatherCity,
-#weather .weatherTemp,
-#weather .weatherDesc,
-#weather .weatherRange{
-	display:none;
-}
 #weather{
-	float:right;
-	width:50%;
-	margin-top:2%;
-	background:transparent !important;
+	margin:auto;
+	width:180px;
+	margin-top: 10px;
 }
-#weather .weatherForecastItem{
+#weather .weatherHead{
 	float:left;
-	width:20%;
-	padding-top:40px;
-	background-position:top center;
+	width:90px;
+	font-size: 1.2em;
 }
-#weather .weatherForecastDay{
-	text-align:center;
+#weather .weatherDetail{
+	 float:right;
+	 font-size: 0.7em;
+	 text-align:right;
 	text-transform:uppercase;
 }
+
 /* BOOKMARK STYLES */
 #bm{
 	margin-top:5%;
@@ -295,7 +299,7 @@ body{
 a:link,
 a:active,
 a:visited,
-.weatherForecastDay,
+.weatherDetail, .weatherHead,
 #fulltime{
 	color:#fff;
 }
