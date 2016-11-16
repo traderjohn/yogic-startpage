@@ -1,4 +1,32 @@
-// Dropdown Menu
+/* Settings *\
+\*==========*/
+var settings = {
+        "links_path": "links.txt",
+	"navigation": {
+		"newWindow": false
+	},
+	
+	"search": {
+		"engines": [
+			["http://www.google.com/search", "q", "Google", "sg"],
+			["http://www.google.com/images", "q", "Google Images", "si"],
+			["http://search.yahoo.com/search", "p", "Yahoo", "sy"],
+			["http://wikipedia.org/w/index.php", "w", "Wikipedia", "sw"],
+			["http://www.dict.cc", "s", "dict.cc", "sd"],
+			["http://dict.leo.org", "search", "leo", "sl"],
+			["http://www.flickr.com/search", "q", "flickr", "sf"],
+			["http://browse.deviantart.com/", "q", "deviantArt", "sa"]
+		],
+		"focusSearch": false
+	},
+	
+	"icons": {
+		"showIcons": false
+	}
+};
+
+/* Dropdown Menu *\
+\*===============*/
 function dropdownToggle(arg1){
     var nCount= arg1.parentNode.childNodes.length;
     for (i = 0; i < nCount; i++){
@@ -28,3 +56,130 @@ window.onclick= function(event){
 	    }
 	}
 }
+
+/*  Get Links  *\
+\*=============*/
+$(document).ready(function() {
+	var shortcuts = {};
+		
+	function ProcessLinks( data ){
+	    // this is the callback function
+	    var linkString = data;
+
+	    /*  Create Array from linkString  *	\
+	    \*================================*/
+	    var linkArray = linkString.split("\n");
+
+	    /*  Go thru Array  *\
+	    \*=================*/
+	    var i;
+	    var count = 1;
+	    var html = '';
+
+	    for(i in linkArray) {
+
+		/*  Get line  *\
+		\*============*/
+		var line = jQuery.trim(linkArray[i]);
+
+		// If line is empty, skip
+		if(!line) continue;
+
+		/*  If it doesn't contain "://",  *\
+		|*  it's not a URL                *|
+		\*================================*/
+		if(/:\/\//.test(line) != true) {
+			if(count > 1) {
+				html = html + '</ul>';
+			}
+			//html = html + '<div class="block"><h1>' + line + '</h1><ul>';
+			html = html + '<ul><li class="title" onclick="dropdownToggle(this)">'+ line + '</li>';
+			count++;
+			continue;
+		}
+
+		/*  Split URL, Title and icon (if any) *\
+		\*=====================================*/
+		var lineArray = line.split(" || ");
+		var url = lineArray[0];
+		var title = lineArray[1];
+		
+		var icon = "";
+		if (lineArray[3]) {
+			icon = lineArray[3];
+		}
+		
+		/*  Add to shortcuts array *\
+		\*=========================*/
+		if(lineArray[2]) {
+			shortcuts[lineArray[2]] = "'"+url+"'";
+		}
+
+		/* Prepares HTML code for showing icon *\
+		\*=====================================*/
+		var iconHtml = '';
+		if (settings.icons.showIcons && icon) {
+			iconHtml = '<img src="' + icon + '"/>'; 
+		}
+
+		/*  Add HTML code  *\
+		\*=================*/
+		if(settings.navigation.newWindow) {
+			html = html + '<li class="link">' + iconHtml + '<a href="' + url + '" target="_blank">' + title + '</a></li>'
+		}
+		else {
+		    html = html + '<li class="link">' + iconHtml + '<a href="' + url + '">' + title + '</a></li>'
+		}
+	    }
+
+	    /*  Add generated content to page  *\
+	    \*=================================*/
+	    html += '</ul>';
+	    html += '<div class="clear"></div>';
+	    $('#bm').append(html);
+
+	    
+	    /*  Keybindings  *\
+	    \*===============*/
+
+	    var typed = '';
+	    var shortcutArray = Object.keys(shortcuts);
+	    var typedDate = new Date();
+		
+	    // Check if we typed a keybinding
+	    function hasSubstring(element) {
+		var index = typed.indexOf(element);
+		if(index >= 0) {
+		    var sliced = typed.slice(index, typed.length);
+		    typed = ''; // Clean typed, so that we can watch for the next keybinding
+		    if(settings.navigation.newWindow) {
+			window.open(eval(shortcuts[sliced]));
+		    } else {
+			window.location.replace(eval(shortcuts[sliced]));
+		    }
+		}
+	    }
+
+	    // React on keypress
+	    $(window).keypress(function(e) {
+		    // If we're in an input, we don't want to interpret the keypresses
+		    $('input').keypress(function(e) {
+			    e.stopPropagation();
+			});
+		    var nowDate = new Date();
+		    var diffMs = (nowDate - typedDate);
+		    if (diffMs > 1000) {	
+			typed = String.fromCharCode(e.which);
+		    } else {
+			typed = typed + String.fromCharCode(e.which);
+		    }
+		    typedDate = new Date();
+		    shortcutArray.some(hasSubstring);
+		});
+
+	}
+	
+	/* The CALL! *\
+	\*===========*/
+	$.get( settings.links_path, ProcessLinks, 'text');
+});
