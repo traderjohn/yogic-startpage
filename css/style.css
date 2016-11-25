@@ -151,12 +151,12 @@ a:active{
 /* WEATHER WIDGET STYLES*/
 #weather{
 	margin:auto;
-	width:180px;
+	width:200px;
 	margin-top: 10px;
 }
 #weather .weatherHead{
 	float:left;
-	width:90px;
+	width:80px;
 	font-size: 1.2em;
 }
 #weather .weatherDetail{
@@ -175,17 +175,16 @@ a:active{
 	width:22%;
 	border-left:1px solid #fff;
 	color:#fff;
-	padding:1%;
+	padding:6px; 
+	margin-bottom:6px;
 }
 #bm li{
-	font-size:.9em;
+	font-size:0.85em;
 	margin:1% 0;
 }
 #bm .title{
-	text-transform:uppercase;
-	font-size:1.2em;	
-	margin-bottom:5%;
-	
+/*	text-transform:uppercase;*/
+	font-size:1.1em;	
 }
 #bm .link{
     display: none;
@@ -194,7 +193,7 @@ a:active{
 	display:block;
 }
 #bm a:hover{
-	margin-left:1%;
+	margin-left:2%;
 }
 
 /* SEARCH STYLES */

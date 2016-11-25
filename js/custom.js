@@ -1,3 +1,30 @@
+/* Settings *\
+\*==========*/
+var isettings = {
+        "links_path": "links.txt",
+
+	"weather": {
+	    "show": true,
+	    "geolocate": false,
+	    "default_loco": "Hong Kong, Hong Kong"
+	},
+
+	"background": {
+	    "source":{
+		"baseUrl": "https://source.unsplash.com/collection/",
+		"dayColId":"407887",
+		"nightColId":"407877",
+		"dawnColId": "407882",
+		"duskColId": "407878"
+	    },
+	    "daily": false
+	},
+	
+	"icons": {
+		"showIcons": false
+	}
+};
+
 $(document).ready(function(){	
 	$(".fancybox").fancybox();
 	$(".various").fancybox({
@@ -23,11 +50,11 @@ $(document).ready(function(){
 	// sourced from unsplash.com; reference source.unsplahs.com
 	// background got to be dark for the styling/ fonts are light in color
 	//var bgURL= 'https://source.unsplash.com/category/nature';
-	var bgBaseUrl= 'https://source.unsplash.com/collection/';
-	var dayColId= '407887';
-	var nightColId= '407877';
-	var dawnColId= '407882';
-	var duskColId= '407878';
+	var bgBaseUrl= isettings.background.source.baseUrl;
+	var dayColId= isettings.background.source.dayColId;
+	var nightColId= isettings.background.source.nightColId;
+	var dawnColId= isettings.background.source.dawnColId;
+	var duskColId= isettings.background.source.duskColId;
 	var bgURL= bgBaseUrl;
 
 	var curD= new Date();
@@ -42,7 +69,9 @@ $(document).ready(function(){
 	    bgURL += nightColId;
 	};
 
-	bgURL= bgURL + '/daily';
+	if(isettings.background.daily){
+	    bgURL= bgURL + '/daily';
+	}
 
 	$('body').css({
 		'background-image':'url('+ bgURL +')',
@@ -51,9 +80,9 @@ $(document).ready(function(){
 	});
 	
    	//WEATHER
-	var bolShowWeather= true;
-	var bolGeoLocate= false;
-	var strLoco = 'Hong Kong, Hong Kong';
+	var bolShowWeather= isettings.weather.show;
+	var bolGeoLocate= isettings.weather.geolocate;
+	var strLoco = isettings.weather.default_loco;
 	if (navigator.geolocation && bolShowWeather && bolGeoLocate ){
 	    navigator.geolocation.getCurrentPosition(function(position){
 		    loadWeather( position.coords.latitude + ',' + position.coords.longitude);

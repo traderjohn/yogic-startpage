@@ -1,18 +1,3 @@
-/* Settings *\
-\*==========*/
-var settings = {
-        
-    "links_path": "links_test.txt",
-	
-    "navigation": {
-	"newWindow": true
-    },
-		
-    "icons": {
-	"showIcons": false
-    }
-};
-
 /* Dropdown Menu *\
 \*===============*/
 function dropdownToggle(arg1){
@@ -32,17 +17,22 @@ function dropdownToggle(arg1){
 
 window.onclick= function(event){
     if (!event.target.matches('.title')){
-	    var dropdowns = document.getElementsByClassName('link');
-	    var i;
-	    for (i = 0; i < dropdowns.length; i++){
-		var openDropdown = dropdowns[i];
+	if (event.target.parentNode.matches('.link') && !settings.navigation.menu_auto_close){
+	    // menu auto close? 
+	    return;
+	}
 
-		//console.log("closing link "+ i);
-		if (openDropdown.style.display== 'block'){
-		    openDropdown.style.display= 'none';
-		}
+	var dropdowns = document.getElementsByClassName('link');
+	var i;
+	for (i = 0; i < dropdowns.length; i++){
+	    var openDropdown = dropdowns[i];
+	    
+	    //console.log("closing link "+ i);
+	    if (openDropdown.style.display== 'block'){
+		openDropdown.style.display= 'none';
 	    }
 	}
+    }
 }
 
 /*  Get Links  *\
@@ -80,6 +70,7 @@ $(document).ready(function() {
 			if(count > 1) {
 				html = html + '</ul>';
 			}
+			//html = html + '<ul><li class="title" onclick="dropdownToggle(this)">'+ line + '</li>';
 			html = html + '<ul><li class="title" onclick="dropdownToggle(this)">'+ line + '</li>';
 			count++;
 			continue;
