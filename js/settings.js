@@ -37,7 +37,7 @@ var settings = {
     "search": {
 	"engines": [
 		    ["http://google.com/search", "q","google"],
-		    ["http://google.com/images", "q","GImg"],
+		    ["http://images.google.com/search", "q","GImg"],
 		    ["http://google.com/maps", "q", "GMap"],
 		    ["http://google.com/news", "q", "GNews"],
 		    ["http://youtube.com/results", "search_query", "youtube"],
@@ -51,6 +51,9 @@ var settings = {
 	"showQuotes": true,
 	"quotes":[
 		  "What you seek is seeking you. ~ Rumi",
+		  "This Universe is not outside of you. Look inside yourself; everything that you want, you already are. ~ Rumi",
+		  //"You are not a drop in the ocean. You are the entire ocean in a drop. ~ Rumi",
+		  "the Universe is in us. ~ Neil DeGrasse Tyson",
 		  "What you seek you already are. ~ Deepak Chopra",
 		  "All that you seek is already within you. ~ Ram Dass",
 		  "Look within! The secret is inside you. ~ Hui Neng",

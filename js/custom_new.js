@@ -96,6 +96,10 @@ $(document).ready(function(){
 	$('#time').html(startTime());
 	
 	//SEARCH
+	
+	// print it first then mess with it
+	printSearchEng();
+
 	$('#currtype a').click(function(e){
 		e.preventDefault();
 	});
@@ -186,6 +190,5 @@ $(document).ready(function(){
 	    }
 	}
 
-	printSearchEng();
 	setupSearch();
 });
