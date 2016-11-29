@@ -15,7 +15,7 @@ var settings = {
     "fonts":{
 	"body": "Trebuchet MS",//"Calibri",
 	"links": "Trebuchet MS", //"Helvetica"
-	"toUpper": true
+	"toUpper": false
     },
     
     "icons": {
@@ -41,14 +41,14 @@ var settings = {
 	
     "search": {
 	"engines": [
-		    ["http://google.com/search", "q","google"],
+		    ["http://google.com/search", "q","GOOGLE"],
 		    ["http://images.google.com/search", "q","GImg"],
 		    ["http://google.com/maps", "q", "GMap"],
 		    ["http://google.com/news", "q", "GNews"],
-		    ["http://youtube.com/results", "search_query", "youtube"],
-		    ["http://soundcloud.com/search/sounds", "q", "soundcloud"],
-		    ["http://bing.com/search", "q", "bing"],
-		    ["http://github.com/search", "q", "github"],
+		    ["http://youtube.com/results", "search_query", "YouTube"],
+		    ["http://soundcloud.com/search/sounds", "q", "SoundCloud"],
+		    ["http://bing.com/search", "q", "Bing"],
+		    ["http://github.com/search", "q", "GitHub"],
 		    ["http://duckduckgo.com/", "q", "DuckDuckGo"],
 		    ["http://wolframalpha.com/input/", "i", "WolframAlpha"]
 		    ],

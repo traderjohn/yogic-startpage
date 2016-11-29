@@ -197,9 +197,8 @@ $(document).ready(function(){
 	    var strBodyFont= settings.fonts.body;
 	    var strLinksFont= settings.fonts.links;
 	    $('body').css('font-family', strBodyFont);
-	    //	    $('#title').css('font-family', strLinksFont);
 	    $('#bm').css('font-family', strLinksFont);
-	    console.log(strBodyFont + ' ' + strLinksFont);
+	    
 	}
 	styleFonts();
 

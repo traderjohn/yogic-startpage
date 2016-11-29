@@ -115,7 +115,10 @@ $(document).ready(function() {
 	    html += '</ul>';
 	    html += '<div class="clear"></div>';
 	    $('#bm').append(html);
-
+	    
+	    if (settings.fonts.toUpper){
+		$('.title').css('text-transform','uppercase');
+	    }
 	    
 	    /*  Keybindings  *\
 	    \*===============*/
