@@ -71,7 +71,7 @@ $(document).ready(function() {
 				html = html + '</ul>';
 			}
 			//html = html + '<ul><li class="title" onclick="dropdownToggle(this)">'+ line + '</li>';
-			html = html + '<ul><li class="title" onclick="dropdownToggle(this)">'+ line + '</li>';
+			html = html + '<ul><li class="title" onclick="dropdownToggle(this)" style="cursor:pointer">'+ line + '</li>';
 			count++;
 			continue;
 		}

@@ -12,6 +12,11 @@ var settings = {
 	"newWindow": true,
 	"menu_auto_close": false
     },
+    "fonts":{
+	"body": "Trebuchet MS",//"Calibri",
+	"links": "Trebuchet MS", //"Helvetica"
+	"toUpper": true
+    },
     
     "icons": {
 	"showIcons": false
