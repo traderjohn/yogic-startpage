@@ -73,19 +73,6 @@ a:active{
     font-style: normal;
 
 }
-/*
-@font-face {
-    font-family: 'weathericons';
-    src: url('https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/font/weathericons-regular-webfont.eot');
-    src: url('https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/font/weathericons-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/font/weathericons-regular-webfont.woff2') format('woff2'),
-         url('https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/font/weathericons-regular-webfont.woff') format('woff'),
-         url('https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/font/weathericons-regular-webfont.ttf') format('truetype'),
-         url('https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/font/weathericons-regular-webfont.svg#weather_iconsregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-*/
 /* TIME STYLES */
 #fulltime{
 	margin:auto;
@@ -256,42 +243,11 @@ a:active{
 	 font-family: 'heydings_iconsregular';
 	 font-size:1em;
 }
-/* RESULTS STYLES */
-#resultsDiv,#resultsDiv .webResult{
-	margin-top:2%;
-}
-.webResult h2, .webResult p{
-	margin-bottom:1%;
-}
-.webResult h3{
-	text-align:right;
-}
-.webResult span{
-	font-size:1em;
-	margin-right:3px;
-}
-.imageResult{
-	float:left;
-	margin:1% 0 1% 1%;
-	width:24%;
-}
-.imageResult .pic{
-	display:block;
-	
-	background-size:cover;
-	background-position:center;
-	background-repeat:no-repeat;
-	padding:40% 0;
-	width:100%;
-}
 /* EDIT TXT COLORS, BACKGROUND COLOR/IMG, TXT EFFECT etc */
 body{
 	background: #313131;
 	font-family:Calibri;
 }
-#loading,
-.webResult span,
-.webResult h2,
 #search input,
 #search span,
 #search .engine .first,
@@ -311,10 +267,6 @@ a:visited,
 }
 #search .sub li a{
 	color:#a5a5a5;
-}
-.webResult p{
-	color:#a5a5a5;
-	text-shadow:1px 1px 1px rgba(0,0,0,.8);
 }
 #search .sub li a:hover{
 	color:#fff;
