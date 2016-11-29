@@ -188,6 +188,7 @@ a:active{
 }
 #bm .link{
     display: none;
+    margin-left: 3%;
 }
 #bm a{
 	display:block;
@@ -243,7 +244,7 @@ a:active{
 	text-align:right;
 }
 #search .first:hover > .sub{
-	opacity:1;
+	opacity:0.75;
 	display:block;
 	transition: all 1s ease 0s;
 }
@@ -303,7 +304,7 @@ a:visited,
 	color:#fff;
 }
 #bm li a{
-	color:#a5a5a5;
+	color:#d9d9d9;
 }
 #bm li a:hover{
 	color:#fff;
