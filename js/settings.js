@@ -10,13 +10,16 @@ var settings = {
 	
     "navigation": {
 	"newWindow": true,
+	//\_ open links and search results in new tab?
 	"menu_auto_close": false
+	//\_ close links dropdown menu after a link is clicked?
     },
 
     "fonts":{
 	"body": "Trebuchet MS",//"Calibri",
 	"links": "Trebuchet MS", //"Helvetica"
 	"toUpper": false
+	//\_ should links and search engine label be all uppercase?
     },
     
     "icons": {
@@ -42,10 +45,11 @@ var settings = {
 	    "duskColId": "407878"
 	},
 	"daily": false
+	//\_ should background picture in each collection be only updated once per day?
     },
 	
     "search": {
-	"engines": [
+	"engines": [// format is [search url, search varible name (different for each site), label to be shown]
 		    ["http://google.com/search", "q","GOOGLE"],
 		    ["http://images.google.com/search", "q","GImg"],
 		    ["http://google.com/maps", "q", "GMap"],
@@ -58,6 +62,7 @@ var settings = {
 		    ["http://wolframalpha.com/input/", "i", "WolframAlpha"]
 		    ],
 	"focusSearch": true,
+	//\_ should the search box be selected on load?
 	"showQuotes": true,
 	"quotes":[
 		  "What you seek is seeking you. ~ Rumi",
