@@ -77,9 +77,11 @@ $(document).ready(function(){
 		h = checkTime(h);
 		s = checkTime(s);
 		
-		//m = today.getHours()>12? m+'PM' : m+'AM';
-		//h = h>12? parseInt(h)-12: h ;
-		
+		if(!settings.clock.IsMilitary){
+		    s = today.getHours()>12? s+' PM' : s+' AM';
+		    h = h>12? parseInt(h)-12: h ;
+		}
+
 		$('#time').html(h +'<span>:</span>'+ m +'<span>:</span>'+ s);
 		//$('#time').html(h+'<span>:</span>'+m);
 		$('#day').html(days[today.getDay()]+'day');

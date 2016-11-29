@@ -12,6 +12,7 @@ var settings = {
 	"newWindow": true,
 	"menu_auto_close": false
     },
+
     "fonts":{
 	"body": "Trebuchet MS",//"Calibri",
 	"links": "Trebuchet MS", //"Helvetica"
@@ -20,6 +21,10 @@ var settings = {
     
     "icons": {
 	"showIcons": false
+    },
+
+    "clock": {
+	"IsMilitary": true
     },
 
     "weather": {
