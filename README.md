@@ -1,5 +1,32 @@
-Startpage Version 1
+The Yogic StartPage
 ===================
+
+## Intro
+What defines a good start page? From one yogi to another, I think a good startpage simply has the follow mission:
+1. Inspire stillness & reminding us of who we really are.
+2. Functional with a minimal focus: no distractions, just giving you the start points that you need.
+3. 
+
+## Credits
+All my ideas are just merely recombination of other people's thoughts. We don't own anything.
+* Layout inspiration: Imwebdesign
+* Weather:
+* Links organization: 
+
+## Configuration:
+
+## Installation:
+### I. Hosting on your own server
+### II. As local file for browser New Tab
+
+## To-do
+- [ ] optional Moon Phase display next to the weather icon
+- [ ] optional Sunrise and Sunset time next to the weather icon
+- [ ] Clickable Switch for opening links in New Window
+- [ ] Countdown or Stop watch button
+- [ ] Arrow keyboard netvigation for links
+- [ ] Hotkey Search box activation 
+
 
 This is a browser Start Page, it has the time, local 5 day forecast, links to commonly visited websites, and a search form that runs on Google's API.
 
