@@ -170,7 +170,7 @@ a:active{
 	margin:1% 0;
 }
 #bm .title{
-/*	text-transform:uppercase;*/
+	cursor: pointer;
 	font-size:1.1em;	
 }
 #bm .link{
@@ -198,7 +198,8 @@ a:active{
 	width:15%;
 }
 #search .type{
-	width:5%;
+/*	width:5%;*/
+	width:30px;
 }
 #search span{
 	padding:0 1%;
@@ -210,7 +211,7 @@ a:active{
 	border:none;
 	border-bottom:1px solid #fff;
 	background:none;
-	padding:1%;
+	padding: 1%;
 	padding-top:0%;
 }
 #search .sub{
@@ -223,9 +224,6 @@ a:active{
 #search .sub li{
 	margin:5px 0;
 	font-size:.9em;
-}
-#search  li{
-	cursor:pointer;	
 }
 #search .engine .first{
 	text-align:right;
