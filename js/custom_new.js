@@ -78,8 +78,10 @@ $(document).ready(function(){
 		s = checkTime(s);
 		
 		if(!settings.clock.IsMilitary){
-		    s = today.getHours()>12? s+' PM' : s+' AM';
+		    s = today.getHours()>12? s+'<p>pm</p>' : s+'<p>AM</p>';
 		    h = h>12? parseInt(h)-12: h ;
+		    
+		    $('#time').css('font-size','3em');
 		}
 
 		$('#time').html(h +'<span>:</span>'+ m +'<span>:</span>'+ s);

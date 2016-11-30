@@ -84,6 +84,12 @@ a:active{
 	font-size:4em;
 	margin-top:5px;
 }
+#time p{
+	font-size:25%;
+	position:relative;
+	bottom: 0.1em;
+	float: right;
+}
 #time span{
 	animation: blink 4s linear infinite;
 	-moz-animation: blink 4s linear infinite;
