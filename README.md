@@ -5,15 +5,17 @@ The Yogic StartPage
 See demo [here](http://johnho.ca/startpage)
 
 ## Intro
-What defines a good start page? From one yogi to another, I think a good startpage simply has the follow missions:  
+What defines a good start page?  
+
+From one yogi to another, I think a good startpage simply has the follow missions:  
 1. Inspire stillness & remind us of who we really are.  
 2. Functional with a minimal focus. No distractions, just YOU and your links.  
-3. Easy to [configure](#configuration)  
+3. Easy to [configure](#configuration).  
 
 How does the Yogic StartPage do this?  
 1. Only the relevant links/ bookmarks and search engines configured by YOU  
 2. Amazing background image from [Unsplash](http://unsplash.com)  
-3. Simple, minimalist functions and design in HTML & Javascript.  
+3. Simple, minimalist functional design in HTML & Javascript.  
 
 ## Credits
 We don't own anything. Anything we know are merely combination of ideas that have once been taught or shown to us by others we met in this life time.
@@ -25,11 +27,13 @@ Everything belongs to the universe.
 
 * Layout inspiration: [lmwebdesign](https://github.com/lmwebdesign/startpage)
 * Weather plugin: [Simple Weather JS](http://simpleweatherjs.com)
-* Weather Fonts: [Weather-icons by Erik Flowers][https://cdnjs.com/libraries/weather-icons]
-* Links organization: [crshd](https://github.com/crshd/startpage)
+* Weather Fonts: [Weather-icons by Erik Flowers](https://cdnjs.com/libraries/weather-icons)
+* Links organization: [crshd](https://github.com/crshd/startpage.rwrt)
 
 ## Configuration
-This startpage is designed so that if you know how to edit a text document, you can configure it easily. You'll only have to be concerned with **two** files that you should open up in a text editor (I recommend [TextWrangler](https://itunes.apple.com/us/app/textwrangler/id404010395?mt=12) for Mac and Notepad.exe for Windows):
+This startpage is designed so that if you know how to edit a text document, you can configure it easily.  
+
+You'll only have to be concerned with **TWO** files that you can edit in a text editor (_I recommend [TextWrangler](https://itunes.apple.com/us/app/textwrangler/id404010395?mt=12) for Mac and Notepad.exe for Windows_):
 
 ### links.txt
 links in links.txt should be in the following format  
@@ -39,11 +43,37 @@ http://your-link-here.com | Your Link's Name
 http://google.com | Google Search
 ```
 
-That is, the URL must start with either **http://** or **https://**. And there **must** be one empty space in front of and immediately after the **|** sign.
+That is, the URL **MUST** start with either **http://** or **https://**. And there **MuST** be **one empty space** in front of and immediately after the **|** sign.
 
 ### js/settings.js
-The settings.js file defines a big settings object that's referenced by all the other pieces of this project.
+The settings.js file defines a big settings object that's referenced by all the other pieces of this project.  
 
+Here's what can be configured and a brief description of features:
+* name of the links text file (_should you want to change its name_)
+* title of the startpage
+* navigation options:
+  * toggle for links and search results in new Tab window
+  * toggle for if the expanded menu should auto-collapse after a link is clicked
+* fonts (_For how to pick the right font for your startpage, check out [this article](https://designschool.canva.com/font-design/)_):
+  * font for the title, weather, clock, and search engine
+  * font for the links titles
+* icons (_NOT supported at the moment_)
+* clock
+  * 24h or 12h clock
+* weather
+  * toggle for hiding weather display
+  * toggle for letting the weather plugin locate you automatically
+  * a default location for when geolocate == false
+* background
+  * source: you can study how unsplash's [API](http://unsplash.com/developers) work and link to your own collection if you don't like mine.
+  * toggle for whether the background image only changes once per day or not
+* search enigne
+  * setup your own search engines (_the first one in the list is the default search engine_)
+  * toggle for if the search box is focused on page load or not
+  * toggle for showing quotes as placeholders in the search input box
+  * You can enter your own collections of Quotes which will randomly be selected on load.
+
+Here's an example of what js/settings.js looks like:
 ```javascript
 var settings = {
     "links_path" : "links.txt",
@@ -123,14 +153,12 @@ var settings = {
 };
 ```
 
-For how to pick the right font for your startpage, check out [this article](https://designschool.canva.com/font-design/)
-
 ## Installation:
 
 ### I. As local file for your browser
 1. [Download](https://github.com/traderjohn/yogic-startpage/archive/master.zip) and unzip the file in a local directory of your choice.  
 2. Edit the links.txt (and js/settings.js) file per the [config section](#configuration)
-3. Change your browser settings to point to the downloaded **index.html** (for example: _file://Users/johnho/Documents/yogic-startpage/index.html_)  
+3. Change your browser settings to point to the downloaded **index.html** (for example: _file://Users/SuperUser/Documents/yogic-startpage/index.html_)  
   * [Chrome](http://wikihow.com/Change-Your-Homepage-on-Chrome): in Step 4 input the local path to index.html  
   * [Firefox](http://wikihow.com/Change-Your-Start-Page-on-Mozilla-Firefox)
   * [Opera & Safari](http://www.makeuseof.com/tag/quick-and-easy-safari-and-opera-start-page-customization/)
