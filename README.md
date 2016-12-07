@@ -5,11 +5,11 @@ The Yogic StartPage
 See demo [here](http://johnho.ca/startpage)
 
 ## Table of Contents
-1. [Into](#into)  
+1. [Intro](#intro)  
 2. [Credits](#credits)  
 3. [Configuration](#configuration)  
 4. [Installation](#installation)  
-5. [To-do stack](#to-do stack)  
+5. [To-do-stack](#to-do-stack)  
 6. [Support](#support)  
 
 ## Intro
@@ -180,7 +180,7 @@ var settings = {
 3. Make a new directory for the startpage in your webserver
 4. Upload the files to the target webserver directory
 
-## To-do stack
+## To-do-stack
 - [ ] optional Moon Phase display next to the weather icon
 - [ ] optional Sunrise and Sunset time next to the weather icon
 - [ ] change background base on Sunrise and Sunset time from the weather info
