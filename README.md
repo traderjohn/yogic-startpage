@@ -4,15 +4,25 @@ The Yogic StartPage
 ## Demo
 See demo [here](http://johnho.ca/startpage)
 
+## Table of Contents
+1. [Into](#into)  
+2. [Credits](#credits)  
+3. [Configuration](#configuration)  
+4. [Installation](#installation)  
+5. [To-do stack](#to-do stack)  
+6. [Support](#support)  
+
 ## Intro
 What defines a good start page?  
 
 From one yogi to another, I think a good startpage simply has the follow missions:  
+
 1. Inspire stillness & remind us of who we really are.  
 2. Functional with a minimal focus. No distractions, just YOU and your links.  
 3. Easy to [configure](#configuration).  
 
 How does the Yogic StartPage do this?  
+
 1. Only the relevant links/ bookmarks and search engines configured by YOU  
 2. Amazing background image from [Unsplash](http://unsplash.com)  
 3. Simple, minimalist functional design in HTML & Javascript.  
@@ -43,20 +53,21 @@ http://your-link-here.com | Your Link's Name
 http://google.com | Google Search
 ```
 
-That is, the URL **MUST** start with either **http://** or **https://**. And there **MuST** be **one empty space** in front of and immediately after the **|** sign.
+That is, the URL **MUST** start with either **http://** or **https://**. And there **MUST** be **one empty space** in front of and immediately after the **|** sign.
 
 ### js/settings.js
 The settings.js file defines a big settings object that's referenced by all the other pieces of this project.  
 
-Here's what can be configured and a brief description of features:
+Here's what can be configured and a brief description of the features:
 * name of the links text file (_should you want to change its name_)
 * title of the startpage
 * navigation options:
-  * toggle for links and search results in new Tab window
-  * toggle for if the expanded menu should auto-collapse after a link is clicked
+  * toggle for opening links and search results in new Tab window
+  * toggle for auto-collapsing the expanded menu after a link is clicked
 * fonts (_For how to pick the right font for your startpage, check out [this article](https://designschool.canva.com/font-design/)_):
   * font for the title, weather, clock, and search engine
   * font for the links titles
+  * toggle for making all links and search engine label Upper Case
 * icons (_NOT supported at the moment_)
 * clock
   * 24h or 12h clock
