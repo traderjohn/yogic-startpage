@@ -1,16 +1,22 @@
-Title 1
-http://google.com || Google yeah || g || images/icon.png
-http://deviantart.com || dA || da
-Title 2
-http://pixelfuckers.org || PF
-chrome://bookmarks/ || Chrome bookmarks
+ABOUT
+https://github.com/traderjohn/yogic-startpage/archive/master.zip || Download This Startpage Now [Github]
+https://github.com/traderjohn/yogic-startpage/ || Documentations [Github]
+http://johnho.ca/startpage || Demo
 
-Coconut-just some really long title
-http://newgrounds.com || NG
+Links Examples
+http://gmail.com || Gmail
+http://canva.com || Canva
 
-New Block
-http://lolwut.com || Lol, Wut?
+{credits}
+https://unsplash.com/developers || Unsplash
+http://simpleweatherjs.com || Simple Weather
+http://cdnjs.com/libraries/weather-icons || Weather Icons
+https://github.com/lmwebdesign/startpage || lmwebdesign/ startpage
+https://github.com/crshd/startpage.rwrt || crshd/ startpage.rwrt
 
-Bananas
-http://crshd.cc || crshd.cc
-http://rahforum.biz || rahforum.biz
+MY_OTHER_PROJECTS
+https://www.etsy.com/hk-en/shop/GunaBeads || Guna Beads
+https://soundcloud.com/ohjho || HeyHo Radio!
+https://github.com/traderjohn || GitHub Repository
+https://flipboard.com/@jho85 || JHO on Flipboard
+https://giphy.com/channel/yogi_cinemagrapher || Yogi Cinemagrapher

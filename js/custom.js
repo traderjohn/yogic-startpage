@@ -1,60 +1,16 @@
-/* Settings *\
-\*==========*/
-var isettings = {
-        "links_path": "links.txt",
+/* Background, Weather, Time, and Search setup *\
+\*=============================================*/
 
-	"weather": {
-	    "show": true,
-	    "geolocate": false,
-	    "default_loco": "Hong Kong, Hong Kong"
-	},
-
-	"background": {
-	    "source":{
-		"baseUrl": "https://source.unsplash.com/collection/",
-		"dayColId":"407887",
-		"nightColId":"407877",
-		"dawnColId": "407882",
-		"duskColId": "407878"
-	    },
-	    "daily": false
-	},
-	
-	"icons": {
-		"showIcons": false
-	}
-};
-
-$(document).ready(function(){	
-	$(".fancybox").fancybox();
-	$(".various").fancybox({
-		maxWidth	: 800,
-		maxHeight	: 600,
-		fitToView	: false,
-		width		: '70%',
-		height		: '70%',
-		autoSize	: false,
-		closeClick	: false,
-		openEffect	: 'none',
-		closeEffect	: 'none'
-	});
-	$('.fancybox-media').fancybox({
-		openEffect  : 'none',
-		closeEffect : 'none',
-		helpers : {
-			media : {}
-		}
-	});
-	
+$(document).ready(function(){		
 	//Background image
 	// sourced from unsplash.com; reference source.unsplahs.com
 	// background got to be dark for the styling/ fonts are light in color
 	//var bgURL= 'https://source.unsplash.com/category/nature';
-	var bgBaseUrl= isettings.background.source.baseUrl;
-	var dayColId= isettings.background.source.dayColId;
-	var nightColId= isettings.background.source.nightColId;
-	var dawnColId= isettings.background.source.dawnColId;
-	var duskColId= isettings.background.source.duskColId;
+	var bgBaseUrl= settings.background.source.baseUrl;
+	var dayColId= settings.background.source.dayColId;
+	var nightColId= settings.background.source.nightColId;
+	var dawnColId= settings.background.source.dawnColId;
+	var duskColId= settings.background.source.duskColId;
 	var bgURL= bgBaseUrl;
 
 	var curD= new Date();
@@ -69,7 +25,7 @@ $(document).ready(function(){
 	    bgURL += nightColId;
 	};
 
-	if(isettings.background.daily){
+	if(settings.background.daily){
 	    bgURL= bgURL + '/daily';
 	}
 
@@ -80,9 +36,9 @@ $(document).ready(function(){
 	});
 	
    	//WEATHER
-	var bolShowWeather= isettings.weather.show;
-	var bolGeoLocate= isettings.weather.geolocate;
-	var strLoco = isettings.weather.default_loco;
+	var bolShowWeather= settings.weather.show;
+	var bolGeoLocate= settings.weather.geolocate;
+	var strLoco = settings.weather.default_loco;
 	if (navigator.geolocation && bolShowWeather && bolGeoLocate ){
 	    navigator.geolocation.getCurrentPosition(function(position){
 		    loadWeather( position.coords.latitude + ',' + position.coords.longitude);
@@ -121,9 +77,13 @@ $(document).ready(function(){
 		h = checkTime(h);
 		s = checkTime(s);
 		
-		//m = today.getHours()>12? m+'PM' : m+'AM';
-		//h = h>12? parseInt(h)-12: h ;
-		
+		if(!settings.clock.IsMilitary){
+		    s = today.getHours()>12? s+'<p>pm</p>' : s+'<p>AM</p>';
+		    h = h>12? parseInt(h)-12: h ;
+		    
+		    $('#time').css('font-size','3em');
+		}
+
 		$('#time').html(h +'<span>:</span>'+ m +'<span>:</span>'+ s);
 		//$('#time').html(h+'<span>:</span>'+m);
 		$('#day').html(days[today.getDay()]+'day');
@@ -139,10 +99,11 @@ $(document).ready(function(){
 	
 	$('#time').html(startTime());
 	
-	//SET INIT VARIABLE
-	var config;
-	
 	//SEARCH
+	
+	// print it first then mess with it
+	printSearchEng();
+
 	$('#currtype a').click(function(e){
 		e.preventDefault();
 	});
@@ -155,180 +116,96 @@ $(document).ready(function(){
 		e.preventDefault();
 		var ce = $('#curreng').html();
 		var se = $(this).html();
-				
+		
 		$(this).html(ce);
 		$('#curreng').html(se);
 		
-		setupSearch();
+		var searchUrl = $('#curreng a').attr('href');
+		var searchVarName = $('#curreng a').attr('id');
+		
+		setupSearch(searchUrl, searchVarName);
 	});
+		
+ 	function printSearchEng(){
+ 	    var arrSearch = settings.search.engines;
+ 	    var strHTML='';
+ 	    var i;
+ 	    for (i in arrSearch){
+ 		var iSrch = arrSearch[i];
+ 		var strURL = iSrch[0];
+ 		var strID = iSrch[1];
+ 		var strLabel = iSrch[2];
+ 		var isCurr = false;
+ 		if (i==0){
+ 		    isCurr= true;
+ 		}
+ 		strHTML += writeSearchOpt(strURL, strID, strLabel, isCurr);
+		
+ 		if (isCurr){
+ 		    strHTML += '<ul class="sub">';
+		}
+	    }
+	    strHTML += '</ul></li>';
+	    $('#search .engine').append(strHTML);
+	}
 	
 
-	$('#search .type .sel').click(function(e){
-		e.preventDefault();
-		var ct = $('#currtype').html();
-		var st = $(this).html();
-		
-		$(this).html(ct);
-		$('#currtype').html(st);
-		
-		setupSearch();
-	});
-	
-	$('#search').submit(function(e){
-		e.preventDefault();	
-		setupSearch();
-	});
-	
-	function setupSearch(sEng,sType,sSite){
-		var eng = $('#curreng a').attr('href');
-		var type = $('#currtype a').attr('id');
-		
-		if(eng=='google.com'){
-			site = false;
-		}else{
-			site = true;
-		}
-		
-		config = {
-			siteURL		: $('#curreng a').attr('href'),	
-			searchSite	: site,
-			type		: type,
-			append		: false,
-			perPage		: 8,			
-			page		: 0
-		}
-		
-		if($('#query').val()!=''){
-			$('#resultsDiv').html('<p id="loading">loading...</p>');
-			googleSearch();
-		}
-	}
-	
-	function googleSearch(settings){
-		// If no parameters are supplied to the function,
-		// it takes its defaults from the config object above:
-		
-		settings = $.extend({},config,settings);
-		settings.term = settings.term || $('#query').val();
-		
-		if(settings.searchSite){
-			// Using the Google site:example.com to limit the search to a
-			// specific domain:
-			settings.term = 'site:'+settings.siteURL+' '+settings.term;
-		}
-		
-		// URL of Google's AJAX search API
-		var apiURL = 'http://ajax.googleapis.com/ajax/services/search/'+settings.type+'?v=1.0&callback=?';
-		var resultsDiv = $('#resultsDiv');
-		
-		$.getJSON(apiURL,{q:settings.term,rsz:settings.perPage,start:settings.page*settings.perPage},function(r){
-			
-			var results = r.responseData.results;
-			$('#more').remove();
-			
-			if(results.length){
-				
-				// If results were returned, add them to a pageContainer div,
-				// after which append them to the #resultsDiv:
-				
-				var pageContainer = $('<div>',{className:'pageContainer'});
-				
-				for(var i=0;i<results.length;i++){
-					// Creating a new result object and firing its toString method:
-					if(i==3){
-						pageContainer.append(new result(results[i]) + '<div class="clear"></div>');
-					}else{
-						pageContainer.append(new result(results[i]) + '');
-					}
-				}
-				
-				if(!settings.append){
-					// This is executed when running a new search, 
-					// instead of clicking on the More button:
-					resultsDiv.empty();
-				}
-				
-				pageContainer.append('<div class="clear"></div>')
-							 .hide().appendTo(resultsDiv)
-							 .fadeIn('slow');
-				
-				var cursor = r.responseData.cursor;
-				
-				// Checking if there are more pages with results, 
-				// and deciding whether to show the More button:
-				
-				if( +cursor.estimatedResultCount > (settings.page+1)*settings.perPage){
-					$('<div>',{id:'more'}).appendTo(resultsDiv).click(function(){
-						googleSearch({append:true,page:settings.page+1});
-						$(this).fadeOut();
-					});
-				}
-			}
-			else {
-				
-				// No results were found for this search.
-				
-				resultsDiv.empty();
-				$('<p>',{className:'notFound',html:'No Results Were Found!'}).hide().appendTo(resultsDiv).fadeIn();
-			}
-		});
-	}
-	
-	function result(r){
-		//Convert Youtube Url to embedded
-		function convert(url){
-			return url.replace('watch?v=','embed/')
-		}
-		
-		// This is class definition. Object of this class are created for
-		// each result. The markup is generated by the .toString() method.
-		var arr = [];
-		
-		// GsearchResultClass is passed by the google API
-		switch(r.GsearchResultClass){
+	function writeSearchOpt(strURL, strID, strLabel, isCurr){
+	    var strOutput = '<a href="' + strURL + '" id="' + strID + '">' + strLabel + '</a>';
+	    if (isCurr) {
+		strOutput = '<li class="first"><p id="curreng">'+ strOutput + "</p>";
+	    } else {
+		strOutput = '<li class="sel">' + strOutput + '</li>';
+	    }
+	    return strOutput;
+ 	}
 
-			case 'GwebSearch':
-				arr = [
-					'<div class="webResult">',
-					'<h2><a href="',r.unescapedUrl,'" target="_blank">',r.title,'</a></h2>',
-					'<p>',r.content,'</p>',
-					'<h3><a href="',r.unescapedUrl,'" target="_blank">',r.visibleUrl,'</a></h3>',
-					'</div>'
-				];
-			break;
-			case 'GimageSearch':
-				arr = [
-					'<div class="imageResult">',
-					'<a target="_blank" href="',r.unescapedUrl,'" title="',r.titleNoFormatting,'" class="fancybox pic" rel="gal" style="background-image:url(',r.unescapedUrl,')" >',
-					'</a>',
-					'<div class="clear"></div>','<a class="various fancybox-media" href="',r.originalContextUrl,'" target="_blank">',r.visibleUrl,'</a>',
-					'</div>'
-				];
-			break;
-			case 'GvideoSearch':
-				arr = [
-					'<div class="imageResult">',
-					'<a class="pic various fancybox.iframe" target="_blank" href="',convert(r.url),'?autoplay=1" title="',r.titleNoFormatting,'" style="background-image:url(',r.tbUrl,');">',
-					'</a>',
-					'<div class="clear"></div>','<a href="',r.originalContextUrl,'" target="_blank">',r.publisher,'</a>',
-					'</div>'
-				];
-			break;
-			case 'GnewsSearch':
-				arr = [
-					'<div class="webResult">',
-					'<h2><a href="',r.unescapedUrl,'" target="_blank">',r.title,'</a></h2>',
-					'<p>',r.content,'</p>',
-					'<a href="',r.unescapedUrl,'" target="_blank">',r.publisher,'</a>',
-					'</div>'
-				];
-			break;
-		}
-		
-		// The toString method.
-		this.toString = function(){
-			return arr.join('');
-		}
+	function getRandInt(min, max){
+	    return Math.floor(Math.random() * (max - min +1)) + min;
 	}
+
+  	function setupSearch(searchURL, searchVarName){
+	    if (!searchURL && !searchVarName){
+		var sURL = $('#curreng a').attr('href');
+		var sVName= $('#curreng a').attr('id');
+		$('#search').attr('action', sURL);
+		$('#search #query').attr('name', sVName);
+		$('#search #query').val('');
+	    } else {
+		$('#search').attr('action', searchURL);
+		$('#search #query').attr('name', searchVarName);
+		}
+
+	    // put quotes in search input box?
+	    var arrayQuotes = settings.search.quotes;
+	    var strPlaceholder = arrayQuotes[getRandInt(0, arrayQuotes.length-1 )];
+	    if (settings.search.showQuotes){
+		$('#search #query').attr('placeholder', strPlaceholder);
+	    }
+
+	    // new window?
+	    if( settings.navigation.newWindow){
+		$('#search').attr('target', '_blank');
+	    }
+	    
+	    // give focus
+	    if (settings.search.focusSearch){
+		$('#search #query').focus();
+	    }
+	}
+
+	setupSearch();
+
+	// USER CONFIG FONTS
+	function styleFonts(){
+	    var strBodyFont= settings.fonts.body;
+	    var strLinksFont= settings.fonts.links;
+	    $('body').css('font-family', strBodyFont);
+	    $('#bm').css('font-family', strLinksFont);
+	    
+	}
+	styleFonts();
 	
+	// PAGE TITLE
+	$('title').html(settings.title);
 });
