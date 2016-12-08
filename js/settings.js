@@ -6,7 +6,7 @@ iam [at] johnho.ca
 /* Settings *\
 \*==========*/
 var settings = {
-    "links_path" : "links.txt",
+    "links_path" : "links_test.txt",
     
     "title" : "&#2384 Here & Now",
     //\_ Page's title: enter your personal mantra

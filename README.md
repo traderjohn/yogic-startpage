@@ -24,13 +24,13 @@ From one yogi to another, I think a good startpage simply has the follow mission
 How does the Yogic StartPage do this?  
 
 1. Only the relevant links/ bookmarks and search engines configured by YOU  
-2. Amazing background image from [Unsplash](http://unsplash.com)  
+2. [Curated](http://www.health.com/stress/relaxing-images-to-destress) background image from [Unsplash](http://unsplash.com)  
 3. Simple, minimalist functional design in HTML & Javascript.  
 
 ## Credits
 We don't own anything. Anything we know are merely combination of ideas that have once been taught or shown to us by others we met in this life time.
 
-> If you wish to make an apple pie from scratch, you must first invent the universe.
+> If you wish to make an apple pie from scratch, you must first invent the universe.  
 > ~_Carl Sagan_
 
 Everything belongs to the universe. 
@@ -192,6 +192,7 @@ var settings = {
 - [ ] Use font matters for Search Engine list
 - [ ] create link for the search type to the current search engine
 - [ ] get autocomplete from the respective search engine as you type in the input box
+- [ ] show your a list of things you've searched for, as a journal of your wandering mind
 
 ## Support
 Log issues [here](https://github.com/traderjohn/yogic-startpage/issues).
