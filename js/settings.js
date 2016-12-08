@@ -6,7 +6,7 @@ iam [at] johnho.ca
 /* Settings *\
 \*==========*/
 var settings = {
-    "links_path" : "links_test.txt",
+    "links_path" : "links.txt",
     
     "title" : "&#2384 Here & Now",
     //\_ Page's title: enter your personal mantra
@@ -72,7 +72,7 @@ var settings = {
 		  "This Universe is not outside of you. Look inside yourself; everything that you want, you already are. ~ Rumi",
 		  //"You are not a drop in the ocean. You are the entire ocean in a drop. ~ Rumi",
 		  "the Universe is in us. ~ Neil DeGrasse Tyson",
-		  "What yOu- seek you already are. ~ Deepak Chopra",
+		  "What you seek you already are. ~ Deepak Chopra",
 		  "All that you seek is already within you. ~ Ram Dass",
 		  "Look within! The secret is inside you. ~ Hui Neng",
 		  "Everything is within. Everything exists. Seek nothing outside of yourself. ~ Miyamoto Musashi",
