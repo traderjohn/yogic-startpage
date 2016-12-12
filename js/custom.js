@@ -104,14 +104,16 @@ $(document).ready(function(){
 	// print it first then mess with it
 	printSearchEng();
 
-	$('#currtype a').click(function(e){
-		e.preventDefault();
-	});
-	
-	$('#curreng a').click(function(e){
-		e.preventDefault();
-	});
-	
+	function deactivateSearchClick(){
+	    $('#currtype a').click(function(e){
+		    e.preventDefault();
+		});
+	    
+	    $('#curreng a').click(function(e){
+		    e.preventDefault();
+		});
+	}
+
 	$('#search .engine .sel').click(function(e){
 		e.preventDefault();
 		var ce = $('#curreng').html();
@@ -192,6 +194,9 @@ $(document).ready(function(){
 	    if (settings.search.focusSearch){
 		$('#search #query').focus();
 	    }
+
+	    // override search engine click
+	    deactivateSearchClick();
 	}
 
 	setupSearch();

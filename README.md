@@ -49,11 +49,11 @@ You'll only have to be concerned with **TWO** files that you can edit in a text 
 links in links.txt should be in the following format  
 
 ```
-http://your-link-here.com | Your Link's Name
-http://google.com | Google Search
+http://your-link-here.com || Your Link's Name
+http://google.com || Google Search
 ```
 
-That is, the URL **MUST** start with either **http://** or **https://**. And there **MUST** be **one empty space** in front of and immediately after the **|** sign.
+That is, the URL **MUST** start with either **http://** or **https://**. And there **MUST** be **one empty space** in front of and immediately after the **||** sign.
 
 ### js/settings.js
 The settings.js file defines a big settings object that's referenced by all the other pieces of this project.  
