@@ -15,7 +15,7 @@ https://github.com/lmwebdesign/startpage || lmwebdesign/ startpage
 https://github.com/crshd/startpage.rwrt || crshd/ startpage.rwrt
 
 MY_OTHER_PROJECTS
-https://www.etsy.com/hk-en/shop/GunaBeads || Guna Beads
+https://www.etsy.com/hk-en/shop/WODBeads || WOD Beads
 https://soundcloud.com/ohjho || HeyHo Radio!
 https://github.com/traderjohn || GitHub Repository
 https://flipboard.com/@jho85 || JHO on Flipboard
