@@ -87,7 +87,7 @@ $(document).ready(function(){
 		$('#time').html(h +'<span>:</span>'+ m +'<span>:</span>'+ s);
 		//$('#time').html(h+'<span>:</span>'+m);
 		$('#day').html(days[today.getDay()]+'day');
-		$('#date').html(months[today.getMonth()-1]+' '+today.getDate()+', '+today.getFullYear());
+		$('#date').html(months[today.getMonth()]+' '+today.getDate()+', '+today.getFullYear());
 		
 		setTimeout(function(){startTime()},500);
 	}
