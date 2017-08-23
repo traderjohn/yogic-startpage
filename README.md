@@ -181,6 +181,8 @@ var settings = {
 4. Upload the files to the target webserver directory
 
 ## To-do-stack
+- [ ] a toggle for all the available link_*.txt found in the directory
+- [ ] integrated search function (within the search box) for links in the list
 - [ ] optional Moon Phase display next to the weather icon
 - [ ] optional Sunrise and Sunset time next to the weather icon
 - [ ] change background base on Sunrise and Sunset time from the weather info
@@ -192,7 +194,7 @@ var settings = {
 - [ ] Use font matters for Search Engine list
 - [ ] create link for the search type to the current search engine
 - [ ] get autocomplete from the respective search engine as you type in the input box
-- [ ] show your a list of things you've searched for, as a journal of your wandering mind
+- [ ] show you a list of things you've searched for, as a journal of your wandering mind
 
 ## Support
 Log issues [here](https://github.com/traderjohn/yogic-startpage/issues).
