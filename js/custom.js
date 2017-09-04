@@ -198,8 +198,51 @@ $(document).ready(function(){
 	    // override search engine click
 	    deactivateSearchClick();
 	}
+	
+	/* clear search box after search
+	   NOT WORKING right now        */
+	$('#search #query').keyup(function(e){
+		console.log(e.keyCode);
+		if(e.keyCode==13){
+		    $('#search #query').value = '';
+		}
+	    });
 
 	setupSearch();
+
+	// LINKS SOURCE
+ 	function printLinkSourceToggle(){
+ 	    var arrLinks = settings.links_path;
+	    var strHTML = '<li class="first"><p id="currtype"><a href="#">M</a></p>';
+
+	    if (Array.isArray(arrLinks)){
+	        strHTML +='<ul class="sub"><li class="sel"><a href="#">D</a></li></ul></li>';
+		$('#search .type').append(strHTML);
+		
+	        /*
+		strHTML='';
+		var i;
+		for (i in arrLinks){
+		    var iSrch = arrSearch[i];
+		    var strURL = iSrch[0];
+		    var strID = iSrch[1];
+		    var strLabel = iSrch[2];
+		    var isCurr = false;
+		    if (i==0){
+			isCurr= true;
+		    }
+		    strHTML += writeSearchOpt(strURL, strID, strLabel, isCurr);
+		    
+		    if (isCurr){
+			strHTML += '<ul class="sub">';
+		    }
+		}
+		strHTML += '</ul></li>';
+		$('#search .engine').append(strHTML);
+		*/
+	    }
+	}
+	printLinkSourceToggle();
 
 	// USER CONFIG FONTS
 	function styleFonts(){
@@ -212,5 +255,6 @@ $(document).ready(function(){
 	styleFonts();
 	
 	// PAGE TITLE
+	$('#fulltime #title').html(settings.title);
 	$('title').html(settings.title);
 });
