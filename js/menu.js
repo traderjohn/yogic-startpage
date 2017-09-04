@@ -162,5 +162,11 @@ $(document).ready(function() {
 	
 	/* The CALL! *\
 	\*===========*/
-	$.get( settings.links_path, ProcessLinks, 'text');
+	var link_path = settings.links_path;
+	if (Array.isArray(link_path)){
+	    link_path = link_path[0];
+	    //\ use first file in the list as default
+	    console.log('Multiple links provided; using '+ link_path +' as default.');
+	}
+	$.get( link_path, ProcessLinks, 'text');
 });

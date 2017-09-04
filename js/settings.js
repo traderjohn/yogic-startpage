@@ -6,8 +6,14 @@ iam [at] johnho.ca
 /* Settings *\
 \*==========*/
 var settings = {
-    "links_path" : "links.txt",
+    //"links_path" : "links_personal.txt",
     
+    "links_path" : ["links/links_dev.txt","links/links_personal.txt"],
+    //\_added support for mulitple links pages
+    //  tried using JS to parse all the files in the links directory but that's not possible in JS
+    //  tried using JS + php but this will require that a local server to be running (for PHP to work)
+    //     so, getting the user to input manually in the setting is best.
+
     "title" : "&#2384 Here & Now",
     //\_ Page's title: enter your personal mantra
 
