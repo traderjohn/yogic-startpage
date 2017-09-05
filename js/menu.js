@@ -63,6 +63,16 @@ $(document).ready(function() {
 		// If line is empty, skip
 		if(!line) continue;
 
+		/* if it contains "title::",      *\
+		|* then set the title of the page *|
+		\*================================*/
+		if(/title::/.test(line) == true){
+		    var page_title = line.split("::")[1];
+		    $('#fulltime #title').html(page_title);
+		    $('title').html(settings.title.add_symbol +' '+ page_title);
+		    continue;
+		}
+
 		/*  If it doesn't contain "://",  *\
 		|*  it's not a URL                *|
 		\*================================*/
@@ -70,7 +80,6 @@ $(document).ready(function() {
 			if(count > 1) {
 				html = html + '</ul>';
 			}
-			//html = html + '<ul><li class="title" onclick="dropdownToggle(this)">'+ line + '</li>';
 			html = html + '<ul><li class="title" onclick="dropdownToggle(this)">'+ line + '</li>';
 			count++;
 			continue;
@@ -114,7 +123,8 @@ $(document).ready(function() {
 	    \*=================================*/
 	    html += '</ul>';
 	    html += '<div class="clear"></div>';
-	    $('#bm').append(html);
+	    //$('#bm').append(html);
+	    $('#bm').html(html);
 	    
 	    if (settings.fonts.toUpper){
 		$('.title').css('text-transform','uppercase');
@@ -169,4 +179,6 @@ $(document).ready(function() {
 	    console.log('Multiple links provided; using '+ link_path +' as default.');
 	}
 	$.get( link_path, ProcessLinks, 'text');
+	window.ProcessLinks = ProcessLinks;
+	//\ give the function ProcessLinks() global scope
 });
