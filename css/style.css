@@ -203,8 +203,11 @@ a:active{
 #search .engine{
 	width:15%;
 }
+#search .engine #linksrc{
+	word-wrap:break-word;
+	font-size: 0.9em;
+}
 #search .type{
-/*	width:5%;*/
 	width:30px;
 }
 #search span{
@@ -243,6 +246,11 @@ a:active{
 	display:block;
 	text-align:right;
 }
+#search .type .sub a{
+	display:block;
+	text-align:left;
+}
+
 #search .type, .webResult span{
 	 font-family: 'heydings_iconsregular';
 	 font-size:1em;
@@ -275,3 +283,4 @@ a:visited,
 #search .sub li a:hover{
 	color:#fff;
 }
+
