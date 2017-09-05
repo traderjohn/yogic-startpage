@@ -73,6 +73,17 @@ $(document).ready(function() {
 		    continue;
 		}
 
+		/* if it contains "background::", *\
+		|* then set the background of the *|
+		|* page                           *|
+		\*================================*/
+		if(/background::/.test(line) == true){
+		    var bg_link = line.split("::")[1];
+		    $('body').css({'background-image':'url('+ bg_link +')'});
+		    console.log('custom background image found. setting it to '+ bg_link);
+		    continue;
+		}
+
 		/*  If it doesn't contain "://",  *\
 		|*  it's not a URL                *|
 		\*================================*/
