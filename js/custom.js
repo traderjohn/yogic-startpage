@@ -103,6 +103,7 @@ $(document).ready(function(){
 	
 	// print it first then mess with it
 	printSearchEng();
+	setupEngineList();
 
 	function deactivateSearchClick(){
 	    $('#currtype a').click(function(e){
@@ -113,21 +114,30 @@ $(document).ready(function(){
 		    e.preventDefault();
 		});
 	}
+	
+	function setupEngineList(){
+	    $('#search .engine .sel').click(function(e){
+		    e.preventDefault();
+		    var ce = $('#curreng').html();
+		    var se = $(this).html();
 
-	$('#search .engine .sel').click(function(e){
-		e.preventDefault();
-		var ce = $('#curreng').html();
-		var se = $(this).html();
-		
-		$(this).html(ce);
-		$('#curreng').html(se);
-		
-		var searchUrl = $('#curreng a').attr('href');
-		var searchVarName = $('#curreng a').attr('id');
-		
-		setupSearch(searchUrl, searchVarName);
-	});
-		
+		    $(this).html(ce);
+		    $('#curreng').html(se);
+		    
+		    var isSearch = $('#currtype a').html() =='M';
+		    if (isSearch){ //set search engine source
+			var searchUrl = $('#curreng a').attr('href');
+			var searchVarName = $('#curreng a').attr('id');
+			console.log('Setting search engine to '+ searchUrl);
+			setupSearch(searchUrl, searchVarName);
+		    }else{         //set links source
+			var link_path = $('#curreng a').html();
+			console.log('Setting links source to '+ link_path);
+			$.get(link_path, ProcessLinks, 'text');
+		    }
+		});
+	}
+
  	function printSearchEng(){
  	    var arrSearch = settings.search.engines;
  	    var strHTML='';
@@ -148,7 +158,7 @@ $(document).ready(function(){
 		}
 	    }
 	    strHTML += '</ul></li>';
-	    $('#search .engine').append(strHTML);
+	    $('#search .engine').html(strHTML);
 	}
 	
 
@@ -199,50 +209,66 @@ $(document).ready(function(){
 	    deactivateSearchClick();
 	}
 	
-	/* clear search box after search
-	   NOT WORKING right now        */
-	$('#search #query').keyup(function(e){
-		console.log(e.keyCode);
-		if(e.keyCode==13){
-		    $('#search #query').value = '';
-		}
+	// clear search box after search
+	$('#search #query').on('change',function(e){
+		var QueryObj = $('#search #query');
+		console.log('Searched for "'+ QueryObj.val() +'"');
+		QueryObj.val('');
 	    });
 
 	setupSearch();
 
 	// LINKS SOURCE
- 	function printLinkSourceToggle(){
+	printLinkSourceToggle(); // must print it first before we can mess with click events
+
+	$('#search .type .sel').click(function(e){
+		e.preventDefault();
+		var ct = $('#currtype').html();
+		var st = $(this).html();
+		var wasEng = $('#currtype a').html()=='M';
+		
+		$(this).html(ct);
+		$('#currtype').html(st);
+		
+		if (wasEng){
+		    printLinkSources();
+		    setupEngineList();
+		    console.log('Links source file list loaded.');
+		}else{
+		    printSearchEng();
+		    setupEngineList();
+		    setupSearch();
+		    console.log('Search Engine list loaded.');
+		}
+	});
+ 	
+	function printLinkSourceToggle(){
  	    var arrLinks = settings.links_path;
 	    var strHTML = '<li class="first"><p id="currtype"><a href="#">M</a></p>';
 
 	    if (Array.isArray(arrLinks)){
 	        strHTML +='<ul class="sub"><li class="sel"><a href="#">D</a></li></ul></li>';
 		$('#search .type').append(strHTML);
-		
-	        /*
-		strHTML='';
+	    }
+	    $('#search .type .first a').attr('title', 'search engine list toggle mode');
+	    $('#search .type .sub a').attr('title', 'links source file toggle mode');
+	}
+
+ 	function printLinkSources(){
+ 	    var arrLinks = settings.links_path;
+	    var strHTML = '<li class="first" id="linksrc"><p id="curreng"><a href="#">'+ arrLinks[0] +'</a></p><ul class="sub">';
+
+	    if (Array.isArray(arrLinks)){
 		var i;
-		for (i in arrLinks){
-		    var iSrch = arrSearch[i];
-		    var strURL = iSrch[0];
-		    var strID = iSrch[1];
-		    var strLabel = iSrch[2];
-		    var isCurr = false;
-		    if (i==0){
-			isCurr= true;
-		    }
-		    strHTML += writeSearchOpt(strURL, strID, strLabel, isCurr);
-		    
-		    if (isCurr){
-			strHTML += '<ul class="sub">';
-		    }
+		for (i=1; i< arrLinks.length; i++){
+		    var iPath = arrLinks[i];
+		    strHTML += '<li class="sel"><a href="#">'+ arrLinks[i] + '</a></li>';
 		}
 		strHTML += '</ul></li>';
-		$('#search .engine').append(strHTML);
-		*/
+
+		$('#search .engine').html(strHTML);
 	    }
 	}
-	printLinkSourceToggle();
 
 	// USER CONFIG FONTS
 	function styleFonts(){
@@ -255,6 +281,6 @@ $(document).ready(function(){
 	styleFonts();
 	
 	// PAGE TITLE
-	$('#fulltime #title').html(settings.title);
-	$('title').html(settings.title);
+	$('#fulltime #title').html(settings.title.default);
+	$('title').html(settings.title.add_symbol +' '+ settings.title.default);
 });
