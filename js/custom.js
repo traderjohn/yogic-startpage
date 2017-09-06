@@ -56,6 +56,12 @@ $(document).ready(function(){
 			html += '<ul class="weatherDetail"><li>'+weather.city+', '+weather.region+'</li>';
 			html += '<li class="currently">'+weather.currently+'</li></ul>';
 			
+			var wLink = settings.weather.link;
+			if(wLink!=''){
+			    html = '<a href="'+ wLink +'" target="_blank" title="Check out the weather at '+ wLink.split("//")[1] +'">' + html;    
+			    html += '</a>';
+			}
+			
 			$("#weather").html(html);
 		    },
 			error: function(error) {
@@ -209,11 +215,13 @@ $(document).ready(function(){
 	    deactivateSearchClick();
 	}
 	
-	// clear search box after search
-	$('#search #query').on('change',function(e){
+	// clear search box after search (wait for 1 sec)
+	$('#search').on('submit',function(e){
 		var QueryObj = $('#search #query');
 		console.log('Searched for "'+ QueryObj.val() +'"');
-		QueryObj.val('');
+		setTimeout(function(){
+			QueryObj.val('');			
+		    }, 1000);
 	    });
 
 	setupSearch();

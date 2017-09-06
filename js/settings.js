@@ -8,7 +8,7 @@ iam [at] johnho.ca
 var settings = {
     //"links_path" : "links.txt",
     
-    "links_path" : ["links/links_personal.txt","links/links_dev.txt"],
+    "links_path" : ["links/personal.txt","links/dev.txt","links/rmotr.txt"],
     //\_added support for mulitple links pages
     //  tried using JS to parse all the files in the links directory but that's not possible in JS
     //  tried using JS + php but this will require that a local server to be running (for PHP to work)
@@ -45,7 +45,9 @@ var settings = {
     "weather": {
 	"show": true,
 	"geolocate": false,
-	"default_loco": "Hong Kong, Hong Kong"
+	"default_loco": "Hong Kong, Hong Kong",
+	"link":"http://wttr.in"
+	//\ optional link for weather to a 3rd party app
     },
     
     "background": {
