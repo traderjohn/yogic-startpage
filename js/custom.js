@@ -77,7 +77,7 @@ $(document).ready(function(){
 		var m=today.getMinutes();
 		var s=today.getSeconds();
 		var days = ['Sun','Mon','Tues','Wednes','Thurs','Fri','Satur'];
-		var months = ['Jan','Feb','Mar','Apr','May','Jun','July','Aug','Sep','Nov','Dec'];
+		var months = ['Jan','Feb','Mar','Apr','May','Jun','July','Aug','Sep','Oct','Nov','Dec'];
 		
 		m = checkTime(m);
 		h = checkTime(h);
@@ -93,7 +93,7 @@ $(document).ready(function(){
 		$('#time').html(h +'<span>:</span>'+ m +'<span>:</span>'+ s);
 		//$('#time').html(h+'<span>:</span>'+m);
 		$('#day').html(days[today.getDay()]+'day');
-		$('#date').html(months[today.getMonth()-1]+' '+today.getDate()+', '+today.getFullYear());
+		$('#date').html(months[today.getMonth()]+' '+today.getDate()+', '+today.getFullYear());
 		
 		setTimeout(function(){startTime()},500);
 	}
